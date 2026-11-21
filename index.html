@@ -505,8 +505,8 @@
       </div>
       <form id="pinForm">
         <div class="form-group">
-          <label>أدخل الرمز السري الخاص بالمدير</label>
-          <input type="password" id="pinCodeInput" inputmode="numeric" autocomplete="off" required placeholder="••••" />
+          <label>أدخل كلمة السر الخاصة بالمدير</label>
+          <input type="password" id="pinCodeInput" autocomplete="off" required placeholder="أدخل كلمة السر" />
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;">تأكيد الدخول</button>
       </form>
@@ -635,9 +635,10 @@
 
   <script>
     (function () {
-      const STORAGE_KEY = 'marea_stores_secure_v1';
-      // بصمة مشفرة لرمز الدخول الافتراضي (يمكن توليد بصمة رمزك الخاص عبر الدالة أسفل الصفحة)
-      const AUTH_DIGEST = '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918';
+      const STORAGE_KEY = 'marea_stores_pass_v1';
+
+      // ضع كلمة السر أو الرمز الخاص بك هنا بين علامتي التنصيص
+      const ADMIN_PASSCODE = 'Marea2026';
 
       const CATEGORIES = [
         'الكل',
@@ -706,25 +707,6 @@
           }
         } catch (_) {}
         memoryStorage[key] = val;
-      }
-
-      function computeDigest(text) {
-        const str = String(text || '');
-        let h1 = 0x811c9dc5;
-        let h2 = 0x01000193;
-        let out = '';
-        for (let round = 0; round < 8; round++) {
-          h1 ^= round + 0x5a;
-          for (let i = 0; i < str.length; i++) {
-            const c = str.charCodeAt(i) + round * 17;
-            h1 ^= c;
-            h1 = Math.imul(h1, 0x01000193);
-            h2 ^= (c << 3) ^ (h1 >>> 11);
-            h2 = Math.imul(h2, 0x85ebca6b);
-          }
-          out += ((h1 >>> 0).toString(16).padStart(8, '0')) + ((h2 >>> 0).toString(16).padStart(8, '0'));
-        }
-        return out;
       }
 
       let state = loadState();
@@ -1343,11 +1325,11 @@
           const input = document.getElementById('pinCodeInput');
           const val = input.value.trim();
           input.value = '';
-          if (computeDigest(val) === AUTH_DIGEST) {
+          if (val === ADMIN_PASSCODE) {
             document.getElementById('pinModal').classList.remove('open');
             setAdminMode(true);
           } else {
-            showToast('الرمز غير صحيح');
+            showToast('كلمة السر غير صحيحة');
           }
         });
 
