@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>دليل متاجر مدينة مارع</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #ccfbf1;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --danger: #dc2626;
+      --success: #16a34a;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 84px;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand p {
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .currency-select, .btn-icon {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .currency-select option {
+      color: var(--text);
+      background: #fff;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.92rem;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    /* Filters */
+    .filters-bar {
+      padding: 12px 16px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chips-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .chips-scroll::-webkit-scrollbar { display: none; }
+
+    .chip {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .zone-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .zone-row select {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    /* Container & Cards */
+    .container {
+      padding: 12px 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .store-cover {
+      height: 140px;
+      background: #e2e8f0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .store-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .store-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.78);
+      color: #fff;
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .store-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .store-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: 0.15s;
+    }
+
+    .btn-primary { background: var(--primary); color: #fff; flex: 1; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-whatsapp { background: #16a34a; color: #fff; }
+    .btn-outline { background: #fff; color: var(--text); border: 1px solid var(--border); }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-sm { padding: 6px 10px; font-size: 0.78rem; }
+
+    /* Products inside store modal or view */
+    .product-item {
+      display: flex;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .product-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #f1f5f9;
+      flex-shrink: 0;
+    }
+
+    .product-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 2px 0 4px;
+    }
+
+    .product-price {
+      font-weight: 800;
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 4px;
+      z-index: 50;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      position: relative;
+      padding: 4px 12px;
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+    }
+
+    .nav-icon {
+      font-size: 1.25rem;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 0;
+      right: 6px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* Modals & Views */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 60;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-sheet {
+      background: #fff;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      border-radius: 20px 20px 0 0;
+      padding: 18px 16px 28px;
+      overflow-y: auto;
+      animation: slideUp 0.2s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    .admin-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--muted);
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+    }
+
+    .toast {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 100;
+      display: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toast" class="toast"></div>
+
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <h1>🏪 دليل متاجر مدينة مارع</h1>
+        <p>تصفح المحلات، الأسعار، واطلب مباشرة عبر واتساب</p>
+      </div>
+      <div class="header-actions">
+        <select id="currencySelect" class="currency-select" title="العملة">
+          <option value="USD">دولار ($)</option>
+          <option value="TRY">ليرة تركية (₺)</option>
+          <option value="SYP">ليرة سورية (ل.س)</option>
+        </select>
+      </div>
+    </div>
+    <div class="search-box">
+      <input type="search" id="searchInput" placeholder="ابحث عن متجر، منتج، صيدلية، مطعم..." />
+    </div>
+  </header>
+
+  <!-- VIEW: DIRECTORY -->
+  <main id="view-directory" class="view active">
+    <div class="filters-bar">
+      <div class="chips-scroll" id="categoryChips"></div>
+      <div class="zone-row">
+        <select id="zoneFilter">
+          <option value="ALL">📍 كل أحياء ومناطق مارع</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-title">
+        <span>المتاجر والخدمات</span>
+        <span id="storesCount" style="font-size:0.82rem; color:var(--muted);"></span>
+      </div>
+      <div id="storesGrid" class="grid"></div>
+    </div>
+  </main>
+
+  <!-- VIEW: CART -->
+  <section id="view-cart" class="view">
+    <div class="container">
+      <div class="section-title">
+        <span>🛒 سلة الطلبات</span>
+        <button class="btn btn-outline btn-sm" onclick="clearCart()">إفراغ السلة</button>
+      </div>
+      <div id="cartContent"></div>
+    </div>
+  </section>
+
+  <!-- VIEW: ADMIN -->
+  <section id="view-admin" class="view">
+    <div class="container">
+      <div id="adminLocked" class="admin-box" style="max-width:420px; margin:24px auto; text-align:center;">
+        <h3 style="margin-bottom:8px;">🔐 لوحة إدارة الدليل</h3>
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:14px;">أدخل رمز الإدارة السري لإضافة أو تعديل المتاجر والمنتجات</p>
+        <div class="form-group">
+          <input type="password" id="adminPinInput" inputmode="numeric" autocomplete="off" placeholder="أدخل رمز PIN السري" />
+        </div>
+        <button class="btn btn-primary" style="width:100%;" onclick="unlockAdmin()">دخول الإدارة</button>
+        <p style="font-size:0.75rem; color:var(--muted); margin-top:10px;">الرمز الافتراضي الأولي: 1234 (يُنصح بتغييره فور الدخول)</p>
+      </div>
+
+      <div id="adminPanel" style="display:none;">
+        <div class="admin-box" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div>
+            <strong>⚙️ وضع المدير مفعل</strong>
+            <div style="font-size:0.78rem; color:var(--muted);">التعديلات تُحفظ تلقائياً في هذا المتصفح</div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="openStoreForm()">+ متجر جديد</button>
+            <button class="btn btn-outline btn-sm" onclick="openProductForm()">+ منتج جديد</button>
+            <button class="btn btn-danger btn-sm" onclick="lockAdmin()">قفل</button>
+          </div>
+        </div>
+
+        <!-- Exchange Rates & PIN Settings -->
+        <div class="admin-box">
+          <h4 style="margin-bottom:10px;">💱 أسعار الصرف مقابل 1 دولار ($) ورمز الحماية</h4>
+          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
+            <div class="form-group" style="margin:0;">
+              <label>سعر الدولار بالتركي (₺)</label>
+              <input type="number" step="0.01" id="rateTRY" />
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label>سعر الدولار بالسوري (ل.س)</label>
+              <input type="number" step="1" id="rateSYP" />
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label>تغيير رمز PIN</label>
+              <input type="password" id="newPinInput" inputmode="numeric" placeholder="رمز جديد (اختياري)" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm" style="margin-top:10px;" onclick="saveSettings()">حفظ الإعدادات</button>
+        </div>
+
+        <!-- Backup & Restore -->
+        <div class="admin-box">
+          <h4 style="margin-bottom:6px;">💾 النسخ الاحتياطي ونقل البيانات (JSON)</h4>
+          <p style="font-size:0.8rem; color:var(--muted); margin-bottom:10px;">صدّر بياناتك لحفظها أو نقلها لجهاز آخر، أو استورد ملف نسخة احتياطية.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-outline btn-sm" onclick="exportJSON()">⬇️ تصدير نسخة JSON</button>
+            <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+              ⬆️ استيراد ملف JSON
+              <input type="file" accept=".json,application/json" style="display:none;" onchange="importJSON(event)" />
+            </label>
+            <button class="btn btn-danger btn-sm" onclick="resetDefaultData()">استعادة الافتراضي</button>
+          </div>
+        </div>
+
+        <!-- Manage Stores List -->
+        <div class="admin-box">
+          <h4 style="margin-bottom:10px;">📋 إدارة المتاجر والمنتجات</h4>
+          <div id="adminStoresList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-view="directory" onclick="switchView('directory', this)">
+      <span class="nav-icon">🏪</span>
+      <span>الدليل</span>
+    </button>
+    <button class="nav-btn" data-view="cart" onclick="switchView('cart', this)">
+      <span class="nav-icon">🛒</span>
+      <span>السلة</span>
+      <span id="cartBadge" class="cart-badge" style="display:none;">0</span>
+    </button>
+    <button class="nav-btn" data-view="admin" onclick="switchView('admin', this)">
+      <span class="nav-icon">⚙️</span>
+      <span>الإدارة</span>
+    </button>
+  </nav>
+
+  <!-- Store Details Modal -->
+  <div id="storeModal" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'storeModal')">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="modalStoreName">تفاصيل المتجر</h3>
+        <button class="btn btn-outline btn-sm" onclick="closeModal('storeModal')">إغلاق ✕</button>
+      </div>
+      <div id="modalStoreBody"></div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Store Modal -->
+  <div id="storeFormModal" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'storeFormModal')">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="storeFormTitle">إضافة متجر</h3>
+        <button class="btn btn-outline btn-sm" onclick="closeModal('storeFormModal')">إغلاق ✕</button>
+      </div>
+      <form onsubmit="saveStoreForm(event)">
+        <input type="hidden" id="editStoreId" />
+        <div class="form-group">
+          <label>اسم المتجر *</label>
+          <input type="text" id="storeName" required placeholder="مثال: سوبرماركت البركة" />
+        </div>
+        <div class="form-group">
+          <label>التصنيف *</label>
+          <select id="storeCategory" required></select>
+        </div>
+        <div class="form-group">
+          <label>الحي / المنطقة في مارع *</label>
+          <input type="text" id="storeZone" required placeholder="مثال: الشارع العام / دوار الساعة / الحي الشمالي" />
+        </div>
+        <div class="form-group">
+          <label>رقم الواتساب (مع رمز الدولة بدون +)</label>
+          <input type="tel" id="storeWhatsapp" placeholder="مثال: 905300000000 أو 963900000000" />
+        </div>
+        <div class="form-group">
+          <label>وصف المتجر وأوقات الدوام</label>
+          <textarea id="storeDesc" rows="2" placeholder="مثال: مواد غذائية وخضار طازجة - من 8 صباحاً حتى 10 مساءً"></textarea>
+        </div>
+        <div class="form-group">
+          <label>صورة واجهة المتجر (تُضغط تلقائياً)</label>
+          <input type="file" accept="image/*" onchange="handleImageUpload(event, 'storeImagePreview', 'storeImageData')" />
+          <input type="hidden" id="storeImageData" />
+          <img id="storeImagePreview" style="display:none; width:100%; max-height:150px; object-fit:cover; border-radius:10px; margin-top:8px;" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">حفظ المتجر</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add/Edit Product Modal -->
+  <div id="productFormModal" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'productFormModal')">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="productFormTitle">إضافة منتج</h3>
+        <button class="btn btn-outline btn-sm" onclick="closeModal('productFormModal')">إغلاق ✕</button>
+      </div>
+      <form onsubmit="saveProductForm(event)">
+        <input type="hidden" id="editProductId" />
+        <div class="form-group">
+          <label>اختر المتجر *</label>
+          <select id="productStoreId" required></select>
+        </div>
+        <div class="form-group">
+          <label>اسم المنتج / الخدمة *</label>
+          <input type="text" id="productName" required placeholder="مثال: زيت زيتون بكر 1 لتر" />
+        </div>
+        <div class="form-group">
+          <label>السعر الأساسي بالدولار ($) *</label>
+          <input type="number" step="0.01" min="0" id="productPriceUSD" required placeholder="مثال: 4.50" />
+        </div>
+        <div class="form-group">
+          <label>وصف مختصر</label>
+          <input type="text" id="productDesc" placeholder="مثال: إنتاج محلي ممتاز" />
+        </div>
+        <div class="form-group">
+          <label>صورة المنتج (تُضغط تلقائياً)</label>
+          <input type="file" accept="image/*" onchange="handleImageUpload(event, 'productImagePreview', 'productImageData')" />
+          <input type="hidden" id="productImageData" />
+          <img id="productImagePreview" style="display:none; width:90px; height:90px; object-fit:cover; border-radius:10px; margin-top:8px;" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">حفظ المنتج</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'marea_stores_directory_v1';
+    const CATEGORIES = [
+      'الكل',
+      'مواد غذائية وسوبرماركت',
+      'مطاعم ووجبات سريعة',
+      'صيدليات وخدمات طبية',
+      'ألبسة وأحذية',
+      'إلكترونيات وصيانة',
+      'مواد بناء وأدوات',
+      'خدمات وحرف'
+    ];
+
+    const DEFAULT_DATA = {
+      pin: '1234',
+      rates: { USD: 1, TRY: 34.5, SYP: 14500 },
+      stores: [
+        {
+          id: 'st_1',
+          name: 'سوبرماركت الخير - مارع',
+          category: 'مواد غذائية وسوبرماركت',
+          zone: 'الشارع العام',
+          whatsapp: '905300000001',
+          desc: 'جميع المواد الغذائية والمنظفات والألبان الطازجة - خدمة توصيل ضمن مارع.',
+          image: ''
+        },
+        {
+          id: 'st_2',
+          name: 'مطعم ومشويات الشام',
+          category: 'مطاعم ووجبات سريعة',
+          zone: 'قرب دوار الساعة',
+          whatsapp: '905300000002',
+          desc: 'شاورما، فروج مشوي، مشاوي مشكلة، ووجبات عائلية يومياً من 11 صباحاً حتى 12 ليلاً.',
+          image: ''
+        },
+        {
+          id: 'st_3',
+          name: 'صيدلية الشفاء المركزية',
+          category: 'صيدليات وخدمات طبية',
+          zone: 'الحي الغربي',
+          whatsapp: '905300000003',
+          desc: 'أدوية، مستلزمات أطفال، قياس ضغط وسكر، واستشارات صيدلانية.',
+          image: ''
+        }
+      ],
+      products: [
+        { id: 'pr_1', storeId: 'st_1', name: 'زيت نباتي 1 لتر', priceUSD: 1.8, desc: 'عبوة 1 لتر نوعية ممتازة', image: '' },
+        { id: 'pr_2', storeId: 'st_1', name: 'أرز بسمتي 1 كغ', priceUSD: 1.5, desc: 'حبة طويلة فاخر', image: '' },
+        { id: 'pr_3', storeId: 'st_2', name: 'وجبة شاورما عربي', priceUSD: 3.0, desc: 'مع بطاطا ومخلل وكريم ثوم', image: '' },
+        { id: 'pr_4', storeId: 'st_2', name: 'فروج مشوي كامل', priceUSD: 7.5, desc: 'مع خبز ومقبلات', image: '' },
+        { id: 'pr_5', storeId: 'st_3', name: 'حليب أطفال رقم 1', priceUSD: 6.0, desc: 'عبوة 400 غرام', image: '' }
+      ]
+    };
+
+    let state = loadState();
+    let activeCategory = 'الكل';
+    let activeZone = 'ALL';
+    let searchQuery = '';
+    let currency = 'USD';
+    let cart = []; // { productId, storeId, qty }
+    let isAdminUnlocked = false;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return JSON.parse(JSON.stringify(DEFAULT_DATA));
+        const parsed = JSON.parse(raw);
+        return {
+          pin: parsed.pin || '1234',
+          rates: parsed.rates || { USD: 1, TRY: 34.5, SYP: 14500 },
+          stores: Array.isArray(parsed.stores) ? parsed.stores : [],
+          products: Array.isArray(parsed.products) ? parsed.products : []
+        };
+      } catch (e) {
+        return JSON.parse(JSON.stringify(DEFAULT_DATA));
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        showToast('تنبيه: ذاكرة المتصفح ممتلئة، قلل حجم الصور أو صدّر نسخة JSON.');
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 2800);
+    }
+
+    function formatPrice(usd) {
+      const val = Number(usd || 0);
+      if (currency === 'USD') return `$${val.toFixed(2)}`;
+      if (currency === 'TRY') return `${(val * state.rates.TRY).toFixed(1)} ₺`;
+      if (currency === 'SYP') return `${Math.round(val * state.rates.SYP).toLocaleString('en-US')} ل.س`;
+      return `$${val.toFixed(2)}`;
+    }
+
+    function init() {
+      renderCategories();
+      renderZones();
+      renderStores();
+      populateCategorySelect();
+
+      document.getElementById('currencySelect').addEventListener('change', (e) => {
+        currency = e.target.value;
+        renderStores();
+        renderCart();
+      });
+
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        renderStores();
+      });
+
+      document.getElementById('zoneFilter').addEventListener('change', (e) => {
+        activeZone = e.target.value;
+        renderStores();
+      });
+    }
+
+    function renderCategories() {
+      const wrap = document.getElementById('categoryChips');
+      wrap.innerHTML = CATEGORIES.map(cat => `
+        <button class="chip ${cat === activeCategory ? 'active' : ''}" onclick="selectCategory('${cat}')">${cat}</button>
+      `).join('');
+    }
+
+    function selectCategory(cat) {
+      activeCategory = cat;
+      renderCategories();
+      renderStores();
+    }
+
+    function renderZones() {
+      const select = document.getElementById('zoneFilter');
+      const zones = [...new Set(state.stores.map(s => s.zone).filter(Boolean))];
+      select.innerHTML = `<option value="ALL">📍 كل أحياء ومناطق مارع</option>` +
+        zones.map(z => `<option value="${escapeHtml(z)}" ${activeZone === z ? 'selected' : ''}>📍 ${escapeHtml(z)}</option>`).join('');
+    }
+
+    function renderStores() {
+      const grid = document.getElementById('storesGrid');
+      const filtered = state.stores.filter(store => {
+        const matchCat = activeCategory === 'الكل' || store.category === activeCategory;
+        const matchZone = activeZone === 'ALL' || store.zone === activeZone;
+        if (!matchCat || !matchZone) return false;
+        if (!searchQuery) return true;
+
+        const inStore = (store.name + ' ' + store.desc + ' ' + store.zone + ' ' + store.category).toLowerCase().includes(searchQuery);
+        const storeProds = state.products.filter(p => p.storeId === store.id);
+        const inProds = storeProds.some(p => (p.name + ' ' + p.desc).toLowerCase().includes(searchQuery));
+        return inStore || inProds;
+      });
+
+      document.getElementById('storesCount').textContent = `${filtered.length} متجر`;
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">لا توجد متاجر مطابقة لبحثك حالياً.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(store => {
+        const prodCount = state.products.filter(p => p.storeId === store.id).length;
+        const coverHtml = store.image
+          ? `<img src="${store.image}" alt="${escapeHtml(store.name)}" />`
+          : `<span style="font-size:2.6rem;">🏪</span>`;
+
+        const waBtn = store.whatsapp
+          ? `<a class="btn btn-whatsapp" href="https://wa.me/${store.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent('مرحباً ' + store.name + '، تواصلت معكم عبر دليل متاجر مارع')}" target="_blank" rel="noopener">واتساب</a>`
+          : '';
+
+        return `
+          <div class="card">
+            <div class="store-cover">
+              ${coverHtml}
+              <span class="store-badge">${escapeHtml(store.category)}</span>
+            </div>
+            <div class="card-body">
+              <div class="store-title">${escapeHtml(store.name)}</div>
+              <div class="store-meta">
+                <span>📍 ${escapeHtml(store.zone)}</span>
+                <span>🛍️ ${prodCount} منتجات متوفرة</span>
+              </div>
+              <p style="font-size:0.83rem; color:var(--muted);">${escapeHtml(store.desc || '')}</p>
+              <div class="card-actions">
+                <button class="btn btn-primary" onclick="openStoreDetails('${store.id}')">تصفح المنتجات</button>
+                ${waBtn}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openStoreDetails(storeId) {
+      const store = state.stores.find(s => s.id === storeId);
+      if (!store) return;
+
+      document.getElementById('modalStoreName').textContent = store.name;
+      const prods = state.products.filter(p => p.storeId === storeId);
+
+      let html = `
+        <div style="margin-bottom:14px; font-size:0.86rem; color:var(--muted);">
+          <div><strong>التصنيف:</strong> ${escapeHtml(store.category)} | <strong>الموقع:</strong> ${escapeHtml(store.zone)}</div>
+          ${store.desc ? `<div style="margin-top:4px;">${escapeHtml(store.desc)}</div>` : ''}
+        </div>
+        <h4 style="margin-bottom:10px;">المنتجات والأسعار</h4>
+      `;
+
+      if (!prods.length) {
+        html += `<div class="empty-state">لم تُضف منتجات لهذا المتجر بعد.</div>`;
+      } else {
+        html += prods.map(p => `
+          <div class="product-item">
+            ${p.image ? `<img class="product-thumb" src="${p.image}" alt="${escapeHtml(p.name)}" />` : `<div class="product-thumb" style="display:flex;align-items:center;justify-content:center;font-size:1.6rem;">📦</div>`}
+            <div class="product-info">
+              <div class="product-name">${escapeHtml(p.name)}</div>
+              ${p.desc ? `<div class="product-desc">${escapeHtml(p.desc)}</div>` : ''}
+              <div class="product-price">${formatPrice(p.priceUSD)}</div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="flex:0;" onclick="addToCart('${p.id}', '${store.id}')">+ سلة</button>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('modalStoreBody').innerHTML = html;
+      document.getElementById('storeModal').classList.add('open');
+    }
+
+    function addToCart(productId, storeId) {
+      const existing = cart.find(i => i.productId === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ productId, storeId, qty: 1 });
+      }
+      updateCartBadge();
+      showToast('تمت الإضافة إلى السلة ✓');
+    }
+
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const badge = document.getElementById('cartBadge');
+      if (totalQty > 0) {
+        badge.style.display = 'flex';
+        badge.textContent = totalQty;
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartBadge();
+      renderCart();
+    }
+
+    function changeCartQty(productId, delta) {
+      const idx = cart.findIndex(i => i.productId === productId);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartContent');
+      if (!cart.length) {
+        container.innerHTML = `<div class="empty-state">سلة الطلبات فارغة حالياً. تصفح المتاجر وأضف ما تحتاجه.</div>`;
+        return;
+      }
+
+      // Group items by store
+      const grouped = {};
+      cart.forEach(item => {
+        if (!grouped[item.storeId]) grouped[item.storeId] = [];
+        grouped[item.storeId].push(item);
+      });
+
+      let html = '';
+      for (const storeId of Object.keys(grouped)) {
+        const store = state.stores.find(s => s.id === storeId) || { name: 'متجر', whatsapp: '' };
+        let storeTotalUSD = 0;
+
+        const itemsHtml = grouped[storeId].map(item => {
+          const prod = state.products.find(p => p.id === item.productId);
+          if (!prod) return '';
+          const subUSD = prod.priceUSD * item.qty;
+          storeTotalUSD += subUSD;
+          return `
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); gap:8px;">
+              <div>
+                <div style="font-weight:700; font-size:0.9rem;">${escapeHtml(prod.name)}</div>
+                <div style="font-size:0.8rem; color:var(--muted);">${formatPrice(prod.priceUSD)} × ${item.qty} = <strong>${formatPrice(subUSD)}</strong></div>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <button class="btn btn-outline btn-sm" onclick="changeCartQty('${prod.id}', -1)">-</button>
+                <span style="font-weight:700; min-width:20px; text-align:center;">${item.qty}</span>
+                <button class="btn btn-outline btn-sm" onclick="changeCartQty('${prod.id}', 1)">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        const waMsgLines = grouped[storeId].map(item => {
+          const prod = state.products.find(p => p.id === item.productId);
+          return prod ? `- ${prod.name} (العدد: ${item.qty}) = ${formatPrice(prod.priceUSD * item.qty)}` : '';
+        }).filter(Boolean);
+
+        const waText = `مرحباً ${store.name}، أرغب بطلب التالي عبر دليل متاجر مارع:\n${waMsgLines.join('\n')}\nالمجموع التقديري: ${formatPrice(storeTotalUSD)}`;
+        const waLink = store.whatsapp
+          ? `<a class="btn btn-whatsapp" style="width:100%; margin-top:10px;" href="https://wa.me/${store.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(waText)}" target="_blank" rel="noopener">إرسال الطلب عبر واتساب المتجر</a>`
+          : `<div style="font-size:0.8rem; color:var(--danger); margin-top:8px;">لا يتوفر رقم واتساب مسجل لهذا المتجر.</div>`;
+
+        html += `
+          <div class="admin-box">
+            <div style="font-weight:800; font-size:1rem; margin-bottom:8px; color:var(--primary-dark);">🏪 ${escapeHtml(store.name)}</div>
+            ${itemsHtml}
+            <div style="display:flex; justify-content:space-between; margin-top:10px; font-weight:800;">
+              <span>إجمالي المتجر:</span>
+              <span>${formatPrice(storeTotalUSD)}</span>
+            </div>
+            ${waLink}
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function switchView(viewName, btnEl) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + viewName).classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      if (viewName === 'cart') renderCart();
+      if (viewName === 'admin' && isAdminUnlocked) renderAdminLists();
+    }
+
+    // Admin Security
+    function unlockAdmin() {
+      const input = document.getElementById('adminPinInput');
+      const entered = input.value.trim();
+      input.value = ''; // Clear immediately for privacy
+      if (entered === state.pin) {
+        isAdminUnlocked = true;
+        document.getElementById('adminLocked').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        document.getElementById('rateTRY').value = state.rates.TRY;
+        document.getElementById('rateSYP').value = state.rates.SYP;
+        renderAdminLists();
+        showToast('تم فتح وضع الإدارة');
+      } else {
+        showToast('رمز PIN غير صحيح');
+      }
+    }
+
+    function lockAdmin() {
+      isAdminUnlocked = false;
+      document.getElementById('adminPinInput').value = '';
+      document.getElementById('adminLocked').style.display = 'block';
+      document.getElementById('adminPanel').style.display = 'none';
+      showToast('تم قفل لوحة الإدارة');
+    }
+
+    function saveSettings() {
+      const tryVal = parseFloat(document.getElementById('rateTRY').value);
+      const sypVal = parseFloat(document.getElementById('rateSYP').value);
+      const newPin = document.getElementById('newPinInput').value.trim();
+      document.getElementById('newPinInput').value = '';
+
+      if (tryVal > 0) state.rates.TRY = tryVal;
+      if (sypVal > 0) state.rates.SYP = sypVal;
+      if (newPin && newPin.length >= 4) {
+        state.pin = newPin;
+        showToast('تم حفظ الإعدادات وتحديث رمز PIN ✓');
+      } else {
+        showToast('تم حفظ أسعار الصرف ✓');
+      }
+      saveState();
+      renderStores();
+    }
+
+    function populateCategorySelect() {
+      const sel = document.getElementById('storeCategory');
+      sel.innerHTML = CATEGORIES.filter(c => c !== 'الكل')
+        .map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    }
+
+    function renderAdminLists() {
+      const wrap = document.getElementById('adminStoresList');
+      if (!state.stores.length) {
+        wrap.innerHTML = `<div class="empty-state">لا توجد متاجر مضافة بعد.</div>`;
+        return;
+      }
+
+      wrap.innerHTML = state.stores.map(store => {
+        const prods = state.products.filter(p => p.storeId === store.id);
+        return `
+          <div style="border:1px solid var(--border); border-radius:12px; padding:12px; margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+              <div>
+                <strong>${escapeHtml(store.name)}</strong>
+                <div style="font-size:0.78rem; color:var(--muted);">${escapeHtml(store.category)} - ${escapeHtml(store.zone)}</div>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <button class="btn btn-outline btn-sm" onclick="openStoreForm('${store.id}')">تعديل</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteStore('${store.id}')">حذف</button>
+              </div>
+            </div>
+            <div style="margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);">
+              <div style="font-size:0.8rem; font-weight:700; margin-bottom:6px;">المنتجات (${prods.length}):</div>
+              ${prods.map(p => `
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; padding:4px 0;">
+                  <span>• ${escapeHtml(p.name)} ($${Number(p.priceUSD).toFixed(2)})</span>
+                  <div style="display:flex; gap:4px;">
+                    <button class="btn btn-outline btn-sm" onclick="openProductForm('${p.id}')">تعديل</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.id}')">×</button>
+                  </div>
+                </div>
+              `).join('') || '<div style="font-size:0.78rem; color:var(--muted);">لا توجد منتجات</div>'}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Store CRUD
+    function openStoreForm(storeId = '') {
+      document.getElementById('editStoreId').value = storeId;
+      const preview = document.getElementById('storeImagePreview');
+      if (storeId) {
+        const st = state.stores.find(s => s.id === storeId);
+        document.getElementById('storeFormTitle').textContent = 'تعديل بيانات المتجر';
+        document.getElementById('storeName').value = st.name;
+        document.getElementById('storeCategory').value = st.category;
+        document.getElementById('storeZone').value = st.zone;
+        document.getElementById('storeWhatsapp').value = st.whatsapp || '';
+        document.getElementById('storeDesc').value = st.desc || '';
+        document.getElementById('storeImageData').value = st.image || '';
+        if (st.image) {
+          preview.src = st.image;
+          preview.style.display = 'block';
+        } else {
+          preview.style.display = 'none';
+        }
+      } else {
+        document.getElementById('storeFormTitle').textContent = 'إضافة متجر جديد';
+        document.getElementById('storeName').value = '';
+        document.getElementById('storeZone').value = '';
+        document.getElementById('storeWhatsapp').value = '';
+        document.getElementById('storeDesc').value = '';
+        document.getElementById('storeImageData').value = '';
+        preview.style.display = 'none';
+      }
+      document.getElementById('storeFormModal').classList.add('open');
+    }
+
+    function saveStoreForm(e) {
+      e.preventDefault();
+      const id = document.getElementById('editStoreId').value;
+      const storeObj = {
+        id: id || 'st_' + Date.now(),
+        name: document.getElementById('storeName').value.trim(),
+        category: document.getElementById('storeCategory').value,
+        zone: document.getElementById('storeZone').value.trim(),
+        whatsapp: document.getElementById('storeWhatsapp').value.trim(),
+        desc: document.getElementById('storeDesc').value.trim(),
+        image: document.getElementById('storeImageData').value
+      };
+
+      if (id) {
+        const idx = state.stores.findIndex(s => s.id === id);
+        if (idx !== -1) state.stores[idx] = storeObj;
+      } else {
+        state.stores.unshift(storeObj);
+      }
+
+      saveState();
+      renderZones();
+      renderStores();
+      renderAdminLists();
+      closeModal('storeFormModal');
+      showToast('تم حفظ المتجر بنجاح ✓');
+    }
+
+    function deleteStore(storeId) {
+      if (!confirm('هل أنت متأكد من حذف هذا المتجر وجميع منتجاته؟')) return;
+      state.stores = state.stores.filter(s => s.id !== storeId);
+      state.products = state.products.filter(p => p.storeId !== storeId);
+      saveState();
+      renderZones();
+      renderStores();
+      renderAdminLists();
+      showToast('تم حذف المتجر');
+    }
+
+    // Product CRUD
+    function openProductForm(productId = '') {
+      if (!state.stores.length) {
+        showToast('أضف متجراً أولاً قبل إضافة المنتجات');
+        return;
+      }
+      const storeSel = document.getElementById('productStoreId');
+      storeSel.innerHTML = state.stores.map(s => `<option value="${s.id}">${escapeHtml(s.name)}</option>`).join('');
+
+      document.getElementById('editProductId').value = productId;
+      const preview = document.getElementById('productImagePreview');
+
+      if (productId) {
+        const pr = state.products.find(p => p.id === productId);
+        document.getElementById('productFormTitle').textContent = 'تعديل المنتج';
+        storeSel.value = pr.storeId;
+        document.getElementById('productName').value = pr.name;
+        document.getElementById('productPriceUSD').value = pr.priceUSD;
+        document.getElementById('productDesc').value = pr.desc || '';
+        document.getElementById('productImageData').value = pr.image || '';
+        if (pr.image) {
+          preview.src = pr.image;
+          preview.style.display = 'block';
+        } else {
+          preview.style.display = 'none';
+        }
+      } else {
+        document.getElementById('productFormTitle').textContent = 'إضافة منتج جديد';
+        document.getElementById('productName').value = '';
+        document.getElementById('productPriceUSD').value = '';
+        document.getElementById('productDesc').value = '';
+        document.getElementById('productImageData').value = '';
+        preview.style.display = 'none';
+      }
+      document.getElementById('productFormModal').classList.add('open');
+    }
+
+    function saveProductForm(e) {
+      e.preventDefault();
+      const id = document.getElementById('editProductId').value;
+      const prodObj = {
+        id: id || 'pr_' + Date.now(),
+        storeId: document.getElementById('productStoreId').value,
+        name: document.getElementById('productName').value.trim(),
+        priceUSD: parseFloat(document.getElementById('productPriceUSD').value) || 0,
+        desc: document.getElementById('productDesc').value.trim(),
+        image: document.getElementById('productImageData').value
+      };
+
+      if (id) {
+        const idx = state.products.findIndex(p => p.id === id);
+        if (idx !== -1) state.products[idx] = prodObj;
+      } else {
+        state.products.unshift(prodObj);
+      }
+
+      saveState();
+      renderStores();
+      renderAdminLists();
+      closeModal('productFormModal');
+      showToast('تم حفظ المنتج بنجاح ✓');
+    }
+
+    function deleteProduct(productId) {
+      state.products = state.products.filter(p => p.id !== productId);
+      saveState();
+      renderStores();
+      renderAdminLists();
+      showToast('تم حذف المنتج');
+    }
+
+    // Image Compression
+    function handleImageUpload(event, previewId, hiddenInputId) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        
